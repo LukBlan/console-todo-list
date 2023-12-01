@@ -1,7 +1,6 @@
-# frozen_string_literal: true
-
 class ConsoleInterface
-  def initialize
+  def initialize(commands)
+    @commands = commands
   end
 
   def init
@@ -24,8 +23,10 @@ class ConsoleInterface
 
   def show_program_instructions
     puts("Instructions: ")
+    @command
+
     print_formatted_message("Write commands in the console to Create, Delete, Read and Update Todos")
-    print_formatted_message("When you want to close the program write Exit")
+    print_formatted_message("When you want to close the program write ExitCommand")
     print_formatted_message("All you type is case insensitive")
   end
 
@@ -35,19 +36,27 @@ class ConsoleInterface
 
   def show_command_list
     puts("Commands: ")
-    print_formatted_message("exit")
+    commands = @commands.all_commands
+
+    commands.each do |command|
+      print_formatted_message(command.description)
+    end
   end
 
   def command_line_interface_loop
     loop do
       print("Enter a Command: ")
       command = gets.chomp.downcase
+      arguments = command.split(" ")
+      command_name = arguments[0]
 
       if command == "exit"
         break
+      elsif @commands.have_command?(command_name)
+        puts("Have it")
+      else
+        print_formatted_message("Invalid commands, Try again")
       end
-
-      print_formatted_message("Invalid command, Try again")
     end
   end
 
