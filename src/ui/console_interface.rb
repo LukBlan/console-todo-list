@@ -32,7 +32,7 @@ class ConsoleInterface
   end
 
   def show_command_list
-    puts("CommandLine: ")
+    puts("Command List: ")
     commands = @commands.all_commands
 
     commands.each do |command|

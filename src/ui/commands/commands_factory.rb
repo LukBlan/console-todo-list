@@ -17,13 +17,13 @@ class CommandsFactory
     mklist_proc = Proc.new do |todo_database, arguments|
       list_name = arguments[1]
       if todo_database.have_list?(list_name)
-        puts("List already exits")
+        @formatter.print_formatted_message("list '#{list_name}' already exits")
       else
         todo_database.create_list(list_name)
       end
     end
 
-    mklist_command = Command.new("mklist <new_list_label>: make a new list with the given label", 2, mklist_proc)
+    mklist_command = Command.new("mklist list_name: make a new list with the given name", 2, mklist_proc)
     @commands_hash["mklist"] = mklist_command
   end
 
@@ -38,10 +38,9 @@ class CommandsFactory
           @formatter.print_formatted_message(name)
         end
       end
-
     end
 
-    mklist_command = Command.new("ls: print the labels of all lists", 1, ls_proc)
+    mklist_command = Command.new("ls: print all lists names", 1, ls_proc)
     @commands_hash["ls"] = mklist_command
   end
 
