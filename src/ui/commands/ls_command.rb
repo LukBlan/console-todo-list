@@ -1,5 +1,3 @@
-require_relative './command'
-
 class LsCommand < Command
   def execute(todo_database, arguments, formatter)
     lists_names = todo_database.lists_names

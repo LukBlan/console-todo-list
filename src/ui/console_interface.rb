@@ -13,7 +13,6 @@ class ConsoleInterface
     self.show_command_list
     puts
     self.command_line_interface_loop
-    puts
     self.show_exit_message
   end
 
@@ -42,12 +41,11 @@ class ConsoleInterface
 
   def command_line_interface_loop
     loop do
-      print("Enter a Command: ")
-      command = gets.chomp.downcase
-      arguments = command.split(" ")
+      user_input = get_user_input
+      arguments = user_input.split(" ")
       command_name = arguments[0]
 
-      if command == "exit"
+      if command_name == "exit"
         break
       elsif @command_line.have_command?(command_name)
         command = @command_line.get_command(command_name)
@@ -55,11 +53,18 @@ class ConsoleInterface
       else
         @formatter.print_formatted_message("Invalid commands, Try again")
       end
+
+      puts
     end
   end
 
   def show_exit_message
-    puts("Bye!")
+    @formatter.print_formatted_message("Bye!")
+  end
+
+  def get_user_input
+    print("Enter a Command: ")
+    gets.chomp.downcase
   end
 
 end

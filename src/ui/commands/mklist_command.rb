@@ -1,5 +1,3 @@
-require_relative './command'
-
 class MklistCommand < Command
   def execute(todo_database, arguments, formatter)
     list_name = arguments[1]

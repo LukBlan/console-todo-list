@@ -1,4 +1,3 @@
-require_relative './command'
 require_relative '../../domain/item'
 
 class MktodoCommand < Command
