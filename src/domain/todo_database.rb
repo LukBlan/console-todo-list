@@ -1,6 +1,6 @@
-# frozen_string_literal: true
+require_relative './list'
 
-class Database
+class TodoDatabase
   def initialize
     @hash_of_lists = Hash.new
   end
