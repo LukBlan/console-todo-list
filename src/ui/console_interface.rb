@@ -1,7 +1,7 @@
 class ConsoleInterface
-  def initialize(todo_database, commands, formatter)
+  def initialize(todo_database, command_line, formatter)
     @todo_database = todo_database
-    @commands = commands
+    @command_line = command_line
     @formatter = formatter
   end
 
@@ -27,13 +27,13 @@ class ConsoleInterface
     puts("Instructions: ")
 
     @formatter.print_formatted_message("Write commands in the console to Create, Delete, Read and Update Todos")
-    @formatter.print_formatted_message("When you want to close the program write ExitCommand")
-    @formatter.print_formatted_message("All you type is case insensitive")
+    @formatter.print_formatted_message("When you want to close the program write exit")
+    @formatter.print_formatted_message("All you type is case insensitive and lowercase by default")
   end
 
   def show_command_list
     puts("Command List: ")
-    commands = @commands.all_commands
+    commands = @command_line.all_commands
 
     commands.each do |command|
       @formatter.print_formatted_message(command.description)
@@ -49,9 +49,9 @@ class ConsoleInterface
 
       if command == "exit"
         break
-      elsif @commands.have_command?(command_name)
-        command = @commands.get_command(command_name)
-        command.execute(@todo_database, arguments)
+      elsif @command_line.have_command?(command_name)
+        command = @command_line.get_command(command_name)
+        command.execute(@todo_database, arguments, @formatter)
       else
         @formatter.print_formatted_message("Invalid commands, Try again")
       end

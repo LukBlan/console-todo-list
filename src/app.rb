@@ -1,18 +1,13 @@
 require_relative './ui/console_interface'
-require_relative './ui/commands/command_line'
-require_relative './ui/commands/commands_factory'
+require_relative './ui/command_line/command_line_factory'
 require_relative './domain/todo_database'
 require_relative './ui/message_print_formatter'
 
 todo_database = TodoDatabase.new
 message_print_formatter = MessagePrintFormatter.new
 
-# Create object responsible of creating commands of command-line
-commands_factory = CommandsFactory.new(message_print_formatter)
+command_line_factory = CommandLineFactory.new
+command_line = command_line_factory.build
 
-# commands_hash -> hash of commands available on command-line interface
-commands_hash = commands_factory.build_commands_hash
-commands = CommandLine.new(commands_hash)
-
-console_interface = ConsoleInterface.new(todo_database, commands, message_print_formatter)
+console_interface = ConsoleInterface.new(todo_database, command_line, message_print_formatter)
 console_interface.init

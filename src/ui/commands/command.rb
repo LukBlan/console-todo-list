@@ -1,13 +1,12 @@
 class Command
   attr_reader :description, :arguments
 
-  def initialize(description, arguments, proc)
+  def initialize(description, number_arguments)
     @description = description
-    @arguments = arguments
-    @proc = proc
+    @number_arguments = number_arguments
   end
 
-  def execute(database, arguments)
-    @proc.call(database, arguments)
+  def execute(database, arguments, formatter)
+    raise "Class is a Abstract class"
   end
 end

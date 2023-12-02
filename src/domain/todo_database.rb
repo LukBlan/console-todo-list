@@ -16,4 +16,9 @@ class TodoDatabase
   def lists_names
     @hash_of_lists.keys
   end
+
+  def add_item(list_name, item)
+    list = @hash_of_lists[list_name]
+    list.add_item(item)
+  end
 end
