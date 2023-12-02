@@ -23,8 +23,7 @@ class CommandsFactory
       end
     end
 
-    mklist_command = Command.new("mklist list_name: make a new list with the given name", 2, mklist_proc)
-    @commands_hash["mklist"] = mklist_command
+    add("mklist", "mklist list_name: make a new list with the given name", 2, mklist_proc)
   end
 
   def add_ls
@@ -40,14 +39,16 @@ class CommandsFactory
       end
     end
 
-    mklist_command = Command.new("ls: print all lists names", 1, ls_proc)
-    @commands_hash["ls"] = mklist_command
+    add("ls", "ls: print all lists names", 1, ls_proc)
   end
 
   def add_exit_command
     exit_proc = Proc.new {}
-    exit_command = Command.new("exit: terminate the program", 1, exit_proc)
-    @commands_hash["exit"] = exit_command
+    add("exit", "exit: terminate the program", 1, exit_proc)
+  end
+
+  def add(name, description, arguments, proc)
+    @commands_hash[name] = Command.new(description, arguments, proc)
   end
 
 end
