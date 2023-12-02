@@ -18,7 +18,15 @@ class CommandsFactory
   end
 
   def add_mklist_command
-    mklist_proc = Proc.new {}
+    mklist_proc = Proc.new do |database, arguments|
+      list_name = arguments[1]
+      if database.have_list?(list_name)
+        puts("List already exits")
+      else
+        database.create_list(list_name)
+      end
+    end
+
     mklist_command = Command.new("mklist <new_list_label>: make a new list with the given label", 2, mklist_proc)
     @commands_hash["mklist"] = mklist_command
   end
