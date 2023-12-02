@@ -1,5 +1,6 @@
 class ConsoleInterface
-  def initialize(commands)
+  def initialize(todo_database, commands)
+    @todo_database = todo_database
     @commands = commands
   end
 
@@ -35,7 +36,7 @@ class ConsoleInterface
   end
 
   def show_command_list
-    puts("Commands: ")
+    puts("CommandLine: ")
     commands = @commands.all_commands
 
     commands.each do |command|
@@ -53,7 +54,8 @@ class ConsoleInterface
       if command == "exit"
         break
       elsif @commands.have_command?(command_name)
-        puts("Have it")
+        command = @commands.get_command(command_name)
+        command.execute(@todo_database, arguments)
       else
         print_formatted_message("Invalid commands, Try again")
       end

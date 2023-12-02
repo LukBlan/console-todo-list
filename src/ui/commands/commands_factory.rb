@@ -6,8 +6,8 @@ class CommandsFactory
   end
 
   def build_commands_hash
-    self.add_exit_command
     self.add_mklist_command
+    self.add_exit_command
     @commands_hash
   end
 
@@ -18,12 +18,12 @@ class CommandsFactory
   end
 
   def add_mklist_command
-    mklist_proc = Proc.new do |database, arguments|
+    mklist_proc = Proc.new do |todo_database, arguments|
       list_name = arguments[1]
-      if database.have_list?(list_name)
+      if todo_database.have_list?(list_name)
         puts("List already exits")
       else
-        database.create_list(list_name)
+        todo_database.create_list(list_name)
       end
     end
 

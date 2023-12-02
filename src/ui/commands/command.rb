@@ -6,4 +6,8 @@ class Command
     @arguments = arguments
     @proc = proc
   end
+
+  def execute(database, arguments)
+    @proc.call(database, arguments)
+  end
 end
