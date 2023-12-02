@@ -12,4 +12,8 @@ class TodoDatabase
   def create_list(list_name)
     @hash_of_lists[list_name] = List.new
   end
+
+  def lists_names
+    @hash_of_lists.keys
+  end
 end
