@@ -1,5 +1,5 @@
 class List
-  attr_reader :name
+  attr_reader :name, :items
 
   def initialize(name)
     @name = name

@@ -1,12 +1,13 @@
-# frozen_string_literal: true
-
 class Item
-  attr_reader :name, :deadline, :description
-
-  def initialize(name, deadline, description="")
-    @name = name
+  def initialize(title, deadline, description="")
+    @title = title
     @deadline = deadline
     @description = description
     @done = false
+  end
+
+  def info
+    done_text = (@done)? "[✔]" : "[ ]"
+    [@title, @deadline, done_text]
   end
 end
