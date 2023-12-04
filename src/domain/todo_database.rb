@@ -39,4 +39,10 @@ class TodoDatabase
   def get_list_by_name(list_name)
     @hash_of_lists[list_name]
   end
+
+  def remove_done_items_from_list(list_name)
+    list = get_list_by_name(list_name)
+    list.remove_done_items
+  end
+
 end

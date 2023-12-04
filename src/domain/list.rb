@@ -22,4 +22,8 @@ class List
   def get_item_by_index(index)
     @items[index]
   end
+
+  def remove_done_items
+    @items = @items.reject { |item| item.done }
+  end
 end

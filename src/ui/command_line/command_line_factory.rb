@@ -5,6 +5,7 @@ require_relative '../commands/mktodo_command'
 require_relative '../commands/show_all_command'
 require_relative '../commands/toggle_command'
 require_relative '../commands/rm_command'
+require_relative '../commands/purge_command'
 require_relative './command_line'
 
 class CommandLineFactory
@@ -17,10 +18,10 @@ class CommandLineFactory
     self.add_mk_todo_command
     self.add_toggle_command
     self.add_rm_command
+    self.add_purge_command
     self.add_ls_command
     self.add_show_all_command
     self.add_exit_command
-
     CommandLine.new(@commands_hash)
   end
 
@@ -28,6 +29,13 @@ class CommandLineFactory
     name = "rm"
     description = "#{name} list_name item_index: remove the specified item on the given list"
     command = RmCommand.new(description, 3)
+    add(name, command)
+  end
+
+  def add_purge_command
+    name = "purge"
+    description = "#{name} list_name: remove all 'done' items on the given list"
+    command = PurgeCommand.new(description, 2)
     add(name, command)
   end
 
