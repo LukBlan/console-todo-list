@@ -9,5 +9,6 @@ class LsCommand < Command
         formatter.print_formatted_message(name)
       end
     end
+
   end
 end

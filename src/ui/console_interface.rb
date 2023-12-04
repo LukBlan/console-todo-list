@@ -49,7 +49,13 @@ class ConsoleInterface
         break
       elsif @command_line.have_command?(command_name)
         command = @command_line.get_command(command_name)
-        command.execute(@todo_database, arguments, @formatter)
+
+        if command.incorrect_number_of_arguments(arguments.length)
+          @formatter.print_formatted_message("Incorrect number of arguments")
+        else
+          command.execute(@todo_database, arguments, @formatter)
+        end
+
       else
         @formatter.print_formatted_message("Invalid commands, Try again")
       end
