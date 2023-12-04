@@ -20,13 +20,21 @@ class MessagePrintFormatter
     puts(line)
     puts(list_table_header)
     puts(line)
+    print_all_items(list_items)
+    puts(line)
+    puts
+  end
 
-    list_items.each_with_index do |item, index|
-      item_info = [index] + item.info
+  def print_all_items(items)
+    items.each_with_index do |item, index|
+      done_text = (item.done)? "[X]" : "[ ]"
+      item_title = item.title
+      item_deadline = item.deadline
+
+      item_info = [index, item_title, item_deadline, done_text]
       item_entry = get_formatted_entry_of_table(item_info)
       puts(item_entry)
     end
-
   end
 
   def get_dash_line

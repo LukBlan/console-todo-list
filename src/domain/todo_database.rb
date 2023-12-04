@@ -25,4 +25,9 @@ class TodoDatabase
     list = @hash_of_lists[list_name]
     list.add_item(item)
   end
+
+  def toggle_todo(list_name, item_index)
+    list = @hash_of_lists[list_name]
+    list.toggle_element_by_index(item_index)
+  end
 end

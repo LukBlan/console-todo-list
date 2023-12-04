@@ -1,4 +1,6 @@
 class Item
+  attr_reader :title, :deadline, :done
+
   def initialize(title, deadline, description="")
     @title = title
     @deadline = deadline
@@ -6,8 +8,7 @@ class Item
     @done = false
   end
 
-  def info
-    done_text = (@done)? "[✔]" : "[ ]"
-    [@title, @deadline, done_text]
+  def toggle
+    @done = !@done
   end
 end

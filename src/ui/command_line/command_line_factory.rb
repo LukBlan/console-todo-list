@@ -3,6 +3,7 @@ require_relative '../commands/ls_command'
 require_relative '../commands/mklist_command'
 require_relative '../commands/mktodo_command'
 require_relative '../commands/show_all_command'
+require_relative '../commands/toggle_command'
 require_relative './command_line'
 
 class CommandLineFactory
@@ -10,9 +11,10 @@ class CommandLineFactory
     @commands_hash = Hash.new
   end
 
-  def build
+  def create
     self.add_mk_list_command
     self.add_mk_todo_command
+    self.add_toggle_command
     self.add_ls_command
     self.add_show_all_command
     self.add_exit_command
@@ -28,6 +30,13 @@ class CommandLineFactory
   def add_ls_command
     name = "ls"
     command = LsCommand.new("#{name}: print all lists names", 1)
+    add(name, command)
+  end
+
+  def add_toggle_command
+    name = "toggle"
+    description = "#{name} list_name item_index: toggle 'done' for the specified item on the given list"
+    command = ToggleCommand.new(description, 3)
     add(name, command)
   end
 
