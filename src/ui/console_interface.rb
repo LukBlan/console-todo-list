@@ -28,10 +28,11 @@ class ConsoleInterface
     @formatter.print_formatted_message("Write commands in the console to Create, Delete, Read and Update Todos")
     @formatter.print_formatted_message("When you want to close the program write exit")
     @formatter.print_formatted_message("All you type is case insensitive and lowercase by default")
+    @formatter.print_formatted_message("You need to write commands without brackets")
   end
 
   def show_command_list
-    puts("Command List: ")
+    puts("Commands: ")
     commands = @command_line.all_commands
 
     commands.each do |command|
