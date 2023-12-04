@@ -22,12 +22,21 @@ class TodoDatabase
   end
 
   def add_item(list_name, item)
-    list = @hash_of_lists[list_name]
+    list = get_list_by_name(list_name)
     list.add_item(item)
   end
 
-  def toggle_todo(list_name, item_index)
-    list = @hash_of_lists[list_name]
-    list.toggle_element_by_index(item_index)
+  def toggle_item_from_list(list_name, item_index)
+    list = get_list_by_name(list_name)
+    list.toggle_item_by_index(item_index)
+  end
+
+  def remove_item_from_list(list_name, item_index)
+    list = get_list_by_name(list_name)
+    list.remove_item_by_index(item_index)
+  end
+
+  def get_list_by_name(list_name)
+    @hash_of_lists[list_name]
   end
 end

@@ -10,8 +10,16 @@ class List
     @items << item
   end
 
-  def toggle_element_by_index(index)
-    item = @items[index]
+  def toggle_item_by_index(index)
+    item = get_item_by_index(index)
     item.toggle
+  end
+
+  def remove_item_by_index(index)
+    @items.delete_at(index)
+  end
+
+  def get_item_by_index(index)
+    @items[index]
   end
 end

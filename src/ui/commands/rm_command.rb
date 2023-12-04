@@ -1,4 +1,4 @@
-class ToggleCommand < Command
+class RmCommand < Command
   def execute(todo_database, arguments, formatter)
     list_name = arguments[1]
     item_index = arguments[2].to_i
@@ -8,7 +8,7 @@ class ToggleCommand < Command
       return
     end
 
-    todo_database.toggle_item_from_list(list_name, item_index)
+    todo_database.remove_item_from_list(list_name, item_index)
 
   end
 end
