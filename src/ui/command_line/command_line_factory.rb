@@ -7,6 +7,7 @@ require_relative '../commands/toggle_command'
 require_relative '../commands/rm_command'
 require_relative '../commands/purge_command'
 require_relative '../commands/up_command'
+require_relative '../commands/down_command'
 require_relative './command_line'
 
 class CommandLineFactory
@@ -21,6 +22,7 @@ class CommandLineFactory
     self.add_rm_command
     self.add_purge_command
     self.add_up_command
+    self.add_down_command
     self.add_ls_command
     self.add_show_all_command
     self.add_exit_command
@@ -35,9 +37,16 @@ class CommandLineFactory
     add(name, command)
   end
 
+  def add_down_command
+    name = "down"
+    description = "[#{name} list_name item_index optional_amount]: move the specified item higher on the given list"
+    command = DownCommand.new(description, [3,4])
+    add(name, command)
+  end
+
   def add_up_command
     name = "up"
-    description = "[#{name} list_name item_index optional_amount]: move the specified item higher on the given list"
+    description = "[#{name} list_name item_index optional_amount]: move the specified item lower on the given list"
     command = UpCommand.new(description, [3,4])
     add(name, command)
   end

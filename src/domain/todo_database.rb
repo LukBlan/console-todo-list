@@ -45,7 +45,7 @@ class TodoDatabase
     list.remove_done_items
   end
 
-  def move_item_on_list(list_name, item_index, amount)
+  def move_item_on_list(list_name, item_index, amount=1)
     list = get_list_by_name(list_name)
     list.move_item(item_index, amount)
   end
