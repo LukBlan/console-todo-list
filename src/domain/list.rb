@@ -28,22 +28,19 @@ class List
   end
 
   def move_item(item_index, amount)
-    amount ||= 1
-    new_order_items = []
-    computed_position = item_index - amount.to_i
-    new_position = (computed_position < 0)? 0 : computed_position
-    moved_item = get_item_by_index(item_index)
+    new_position = item_index - amount
+    new_position = (new_position < 0)? 0 : new_position
+    new_position = (new_position > @items.length - 1)? @items.length - 1 : new_position
+    current_index = item_index
+    swaps = (amount).abs
 
-    @items.each_with_index do |item, index|
-      if index == new_position
-        new_order_items << moved_item
-      end
+    while new_position != current_index && swaps > 0
+      delta = (current_index > new_position)? -1 : 1
+      next_position = current_index + delta
+      @items[current_index], @items[next_position] = @items[next_position], @items[current_index]
 
-      if index != item_index
-        new_order_items << item
-      end
+      current_index += delta
+      swaps -= 1
     end
-
-    @items = new_order_items
   end
 end
