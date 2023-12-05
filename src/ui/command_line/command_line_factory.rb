@@ -10,6 +10,7 @@ require_relative '../commands/up_command'
 require_relative '../commands/down_command'
 require_relative '../commands/swap_command'
 require_relative '../commands/sort_command'
+require_relative '../commands/priority_command'
 require_relative './command_line'
 
 class CommandLineFactory
@@ -29,6 +30,7 @@ class CommandLineFactory
     self.add_swap_command
     self.add_ls_command
     self.add_show_all_command
+    self.add_priority_command
     self.add_exit_command
 
     CommandLine.new(@commands_hash)
@@ -38,6 +40,13 @@ class CommandLineFactory
     name = "sort"
     description = "[#{name} list_name]: sort list by deadline"
     command = SortCommand.new(description, [2])
+    add(name, command)
+  end
+
+  def add_priority_command
+    name = "priority"
+    description = "[#{name} list_name]: swap the positions of the specified items on the given list"
+    command = PriorityCommand.new(description, [2])
     add(name, command)
   end
 

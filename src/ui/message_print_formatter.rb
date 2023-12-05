@@ -27,14 +27,18 @@ class MessagePrintFormatter
 
   def print_all_items(items)
     items.each_with_index do |item, index|
-      done_text = (item.done)? "[X]" : "[ ]"
-      item_title = item.title
-      item_deadline = item.deadline
-
-      item_info = [index, item_title, item_deadline, done_text]
-      item_entry = get_formatted_entry_of_table(item_info)
+      item_entry = item_entry(item, index)
       puts(item_entry)
     end
+  end
+
+  def item_entry(item, index=0)
+    done_text = (item.done)? "[X]" : "[ ]"
+    item_title = item.title
+    item_deadline = item.deadline
+
+    item_info = [index, item_title, item_deadline, done_text]
+    get_formatted_entry_of_table(item_info)
   end
 
   def get_dash_line

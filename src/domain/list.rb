@@ -48,6 +48,10 @@ class List
     @items[first_index], @items[second_index] = @items[second_index], @items[first_index]
   end
 
+  def get_priority_item
+    @items[0]
+  end
+
   def sort_by_deadline
     unsorted = true
     i = 0

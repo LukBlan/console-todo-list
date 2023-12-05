@@ -60,4 +60,9 @@ class TodoDatabase
     list.sort_by_deadline
   end
 
+  def get_priority_item_from_list(list_name)
+    list = get_list_by_name(list_name)
+    list.get_priority_item
+  end
+
 end
