@@ -50,4 +50,9 @@ class TodoDatabase
     list.move_item(item_index, amount)
   end
 
+  def swap(list_name, first_index, second_index)
+    list = get_list_by_name(list_name)
+    list.swap(first_index, second_index)
+  end
+
 end

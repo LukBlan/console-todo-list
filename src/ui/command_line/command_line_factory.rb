@@ -8,6 +8,7 @@ require_relative '../commands/rm_command'
 require_relative '../commands/purge_command'
 require_relative '../commands/up_command'
 require_relative '../commands/down_command'
+require_relative '../commands/swap_command'
 require_relative './command_line'
 
 class CommandLineFactory
@@ -23,11 +24,19 @@ class CommandLineFactory
     self.add_purge_command
     self.add_up_command
     self.add_down_command
+    self.add_swap_command
     self.add_ls_command
     self.add_show_all_command
     self.add_exit_command
 
     CommandLine.new(@commands_hash)
+  end
+
+  def add_swap_command
+    name = "swap"
+    description = "[#{name} list_name item_1_index item_2_index]: swap the positions of the specified items on the given list"
+    command = SwapCommand.new(description, [4])
+    add(name, command)
   end
 
   def add_rm_command

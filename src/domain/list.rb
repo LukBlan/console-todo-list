@@ -43,4 +43,8 @@ class List
       swaps -= 1
     end
   end
+
+  def swap(first_index, second_index)
+    @items[first_index], @items[second_index] = @items[second_index], @items[first_index]
+  end
 end
