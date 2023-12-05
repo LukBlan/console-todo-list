@@ -47,4 +47,30 @@ class List
   def swap(first_index, second_index)
     @items[first_index], @items[second_index] = @items[second_index], @items[first_index]
   end
+
+  def sort_by_deadline
+    unsorted = true
+    i = 0
+
+    while unsorted
+      unsorted = false
+      list_last_index = @items.length - 1
+
+      j = 0
+      while j < list_last_index - 1 - i
+        first_item = @items[j]
+        next_item = @items[j + 1]
+
+        if next_item.has_early_deadline?(first_item)
+          swap(j, j+1)
+          unsorted = true
+        end
+
+        j += 1
+      end
+
+      i += 1
+    end
+
+  end
 end

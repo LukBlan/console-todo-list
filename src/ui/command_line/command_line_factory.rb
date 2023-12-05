@@ -9,6 +9,7 @@ require_relative '../commands/purge_command'
 require_relative '../commands/up_command'
 require_relative '../commands/down_command'
 require_relative '../commands/swap_command'
+require_relative '../commands/sort_command'
 require_relative './command_line'
 
 class CommandLineFactory
@@ -22,6 +23,7 @@ class CommandLineFactory
     self.add_toggle_command
     self.add_rm_command
     self.add_purge_command
+    self.add_sort_command
     self.add_up_command
     self.add_down_command
     self.add_swap_command
@@ -30,6 +32,13 @@ class CommandLineFactory
     self.add_exit_command
 
     CommandLine.new(@commands_hash)
+  end
+
+  def add_sort_command
+    name = "sort"
+    description = "[#{name} list_name]: sort list by deadline"
+    command = SortCommand.new(description, [2])
+    add(name, command)
   end
 
   def add_swap_command

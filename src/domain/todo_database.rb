@@ -55,4 +55,9 @@ class TodoDatabase
     list.swap(first_index, second_index)
   end
 
+  def sort_list_by_deadline(list_name)
+    list = get_list_by_name(list_name)
+    list.sort_by_deadline
+  end
+
 end
