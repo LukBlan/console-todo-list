@@ -17,9 +17,12 @@ class ConsoleInterface
   end
 
   def show_welcome_message
-    puts("----------------------")
-    puts(" Welcome to Todo List")
-    puts("----------------------")
+    line = @formatter.get_dash_line
+    text = @formatter.get_text_in_middle("Welcome to Todo List")
+
+    puts(line)
+    puts(text)
+    puts(line)
   end
 
   def show_program_instructions

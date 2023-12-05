@@ -31,59 +31,59 @@ class CommandLineFactory
   def add_rm_command
     name = "rm"
     description = "[#{name} list_name item_index]: remove the specified item on the given list"
-    command = RmCommand.new(description, 3)
+    command = RmCommand.new(description, [3])
     add(name, command)
   end
 
   def add_up_command
     name = "up"
     description = "[#{name} list_name item_index optional_amount]: move the specified item higher on the given list"
-    command = UpCommand.new(description, 3)
+    command = UpCommand.new(description, [3,4])
     add(name, command)
   end
 
   def add_purge_command
     name = "purge"
     description = "[#{name} list_name]: remove all 'done' items on the given list"
-    command = PurgeCommand.new(description, 2)
+    command = PurgeCommand.new(description, [2])
     add(name, command)
   end
 
   def add_mk_list_command
     name = "mklist"
-    command = MklistCommand.new("[mklist list_name]: make a new list with the given name", 2)
+    command = MklistCommand.new("[mklist list_name]: make a new list with the given name", [2])
     add(name, command)
   end
 
   def add_ls_command
     name = "ls"
-    command = LsCommand.new("[#{name}]: print all lists names", 1)
+    command = LsCommand.new("[#{name}]: print all lists names", [1])
     add(name, command)
   end
 
   def add_toggle_command
     name = "toggle"
     description = "[#{name} list_name item_index]: toggle 'done' for the specified item on the given list"
-    command = ToggleCommand.new(description, 3)
+    command = ToggleCommand.new(description, [3])
     add(name, command)
   end
 
   def add_mk_todo_command
     name = "mktodo"
     desciption = "[#{name} list_name item_title item_deadline(yyyy-mm-dd) optional_description]: make a todo from given list"
-    command = MktodoCommand.new(desciption, 4)
+    command = MktodoCommand.new(desciption, [4,5])
     add(name, command)
   end
 
   def add_exit_command
     name = "exit"
-    command = ExitCommand.new("[#{name}]: terminate the program", 1)
+    command = ExitCommand.new("[#{name}]: terminate the program", [1])
     add(name, command)
   end
 
   def add_show_all_command
     name = "showall"
-    command = ShowAllCommand.new("[#{name}]: print all list and items with format", 1)
+    command = ShowAllCommand.new("[#{name}]: print all list and items with format", [1])
     add(name, command)
   end
 

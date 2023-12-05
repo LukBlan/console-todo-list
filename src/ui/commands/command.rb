@@ -13,6 +13,6 @@ class Command
   end
 
   def incorrect_number_of_arguments(number)
-    number != @number_arguments
+    !@number_arguments.include?(number)
   end
 end
