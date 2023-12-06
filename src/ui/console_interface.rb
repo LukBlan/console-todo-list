@@ -53,11 +53,10 @@ class ConsoleInterface
         break
       elsif @command_line.have_command?(command_name)
         command = @command_line.get_command(command_name)
+        mapped_arguments = command.map_arguments(arguments)
 
-        if command.incorrect_number_of_arguments(arguments.length)
-          @formatter.print_formatted_message("Incorrect number of arguments")
-        else
-          command.execute(@todo_database, arguments, @formatter)
+        if command.valid_command?(@todo_database, mapped_arguments, @formatter)
+          command.execute(@todo_database, mapped_arguments, @formatter)
         end
 
       else
