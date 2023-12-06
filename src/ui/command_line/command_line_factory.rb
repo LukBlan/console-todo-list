@@ -11,6 +11,7 @@ require_relative '../commands/down_command'
 require_relative '../commands/swap_command'
 require_relative '../commands/sort_command'
 require_relative '../commands/priority_command'
+require_relative '../commands/print_command'
 require_relative './command_line'
 
 class CommandLineFactory
@@ -30,6 +31,7 @@ class CommandLineFactory
     self.add_swap_command
     self.add_ls_command
     self.add_show_all_command
+    self.add_print_command
     self.add_priority_command
     self.add_exit_command
 
@@ -40,6 +42,13 @@ class CommandLineFactory
     name = "sort"
     description = "[#{name} list_name]: sort list by deadline"
     command = SortCommand.new(description, [2])
+    add(name, command)
+  end
+
+  def add_print_command
+    name = "print"
+    description = "[#{name} list_name optional_item_index]: print all items of the given list or specific item on list"
+    command = PrintCommand.new(description, [2, 3])
     add(name, command)
   end
 
