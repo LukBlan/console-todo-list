@@ -1,9 +1,10 @@
 class Command
   ITEM_NAME_MAX_LENGTH = 19
   ABSTRACT_CLASS_ERROR = "Class is a Abstract class"
-  attr_reader :description, :arguments
+  attr_reader :name, :description, :arguments
 
-  def initialize(description, number_arguments)
+  def initialize(name, description, number_arguments)
+    @name = name
     @description = description
     @number_arguments = number_arguments
   end
