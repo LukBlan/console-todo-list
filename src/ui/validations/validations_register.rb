@@ -1,9 +1,11 @@
 require_relative './list_already_exist_validation'
+require_relative './list_dont_exist_validation'
 
 class ValidationsRegister
   def initialize
     @validations = [
-      List_Already_Exist_Validation.new,
+      ListAlreadyExistValidation.new,
+      ListDontExistValidation.new
     ]
   end
 

@@ -4,8 +4,8 @@ class MklistCommand < Command
     todo_database.create_list(list_name)
   end
 
-  def map_arguments(arguments)
-    mapped_arguments = super(arguments)
+  def hash_arguments(arguments)
+    mapped_arguments = Hash.new
     mapped_arguments["list_name"] = arguments[1]
     mapped_arguments
   end

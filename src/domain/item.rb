@@ -1,7 +1,7 @@
 class Item
   attr_reader :title, :deadline, :done, :description
 
-  def initialize(title, deadline, description=nil)
+  def initialize(title, deadline, description)
     @title = title
     @deadline = deadline
     @description = description

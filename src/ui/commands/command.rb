@@ -22,7 +22,11 @@ class Command
     hash = Hash.new
     max_arguments_amount = @number_arguments[-1]
     hash["extra"] = arguments[(max_arguments_amount + 1)..-1] || []
-    hash
+    hash.merge(self.hash_arguments(arguments))
+  end
+
+  def hash_arguments(arguments)
+    Hash.new
   end
 
   def count_arguments(mapped_arguments)
@@ -31,7 +35,6 @@ class Command
     end
 
     extra_arguments_amount = mapped_arguments["extra"].length
-
     arguments_amount + extra_arguments_amount
   end
 
