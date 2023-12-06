@@ -7,7 +7,8 @@ class PrintCommand < Command
     if item_index == nil
       formatter.print_list(list)
     else
-
+      item = list.get_item_by_index(item_index.to_i)
+      formatter.print_item(item)
     end
   end
 end

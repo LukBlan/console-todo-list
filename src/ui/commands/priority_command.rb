@@ -8,7 +8,6 @@ class PriorityCommand < Command
     end
 
     item = todo_database.get_priority_item_from_list(list_name)
-    item_entry = formatter.item_entry(item)
-    formatter.print_formatted_message(item_entry)
+    formatter.print_item(item)
   end
 end

@@ -27,18 +27,36 @@ class MessagePrintFormatter
 
   def print_all_items(items)
     items.each_with_index do |item, index|
-      item_entry = item_entry(item, index)
+      done_text = self.done_box(item.done)
+      item_title = item.title
+      item_deadline = item.deadline
+
+      item_info = [index, item_title, item_deadline, done_text]
+      item_entry = get_formatted_entry_of_table(item_info)
       puts(item_entry)
     end
   end
 
-  def item_entry(item, index=0)
-    done_text = (item.done)? "[X]" : "[ ]"
-    item_title = item.title
-    item_deadline = item.deadline
+  def done_box(done_state)
+    (done_state)? "[X]" : "[ ]"
+  end
 
-    item_info = [index, item_title, item_deadline, done_text]
-    get_formatted_entry_of_table(item_info)
+  def print_item(item)
+    item_title = get_text_in_middle(item.title)
+    line = get_dash_line
+    done_text = self.done_box(item.done)
+
+    puts(line)
+    puts(item_title)
+    puts(line)
+    puts("Deadline: #{item.deadline}")
+    puts("Done: #{done_text}")
+
+    if item.description != nil
+      puts("Description: #{item.description}")
+    end
+
+    puts(line)
   end
 
   def get_dash_line
