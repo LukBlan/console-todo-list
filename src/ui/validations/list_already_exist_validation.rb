@@ -1,10 +1,6 @@
 class ListAlreadyExistValidation
   def invalid_arguments?(todo_database, mapped_arguments)
     list_name = mapped_arguments["list_name"]
-    self.list_already_exist?(todo_database, list_name)
-  end
-
-  def list_already_exist?(todo_database, list_name)
     todo_database.have_list?(list_name)
   end
 
