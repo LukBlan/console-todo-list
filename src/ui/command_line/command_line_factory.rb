@@ -58,7 +58,7 @@ class CommandLineFactory
         "down",
         "[down list_name item_index optional_amount]: move the specified item higher on the given list",
         [2,3],
-        []
+        [validations["list_dont_exist"], validations["index_doesnt_exist"], validations["positive_amount"]]
       ),
       SortCommand.new(
         "sort",
