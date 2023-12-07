@@ -40,7 +40,7 @@ class CommandLineFactory
         "rm",
         "[rm list_name item_index]: remove the specified item on the given list",
         [2],
-        []
+        [validations["list_dont_exist"],validations["index_doesnt_exist"]]
       ),
       PurgeCommand.new(
         "purge",
