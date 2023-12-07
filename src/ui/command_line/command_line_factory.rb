@@ -34,7 +34,7 @@ class CommandLineFactory
         "toggle",
         "[toggle list_name item_index]: toggle 'done' for the specified item on the given list",
         [2],
-        []
+        [validations["list_dont_exist"],validations["index_doesnt_exist"]]
       ),
       RmCommand.new(
         "rm",

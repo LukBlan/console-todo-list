@@ -82,4 +82,12 @@ class List
     @items.find { |item| item.title == item_title}
   end
 
+  def index_exist?(item_index)
+    if item_index < 0
+      return false
+    end
+
+    @items.length - 1 >= item_index
+  end
+
 end

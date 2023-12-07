@@ -70,4 +70,9 @@ class TodoDatabase
     list.have_item?(item_title)
   end
 
+  def index_exist_on_list?(list_name, item_index)
+    list = get_list_by_name(list_name)
+    list.index_exist?(item_index)
+  end
+
 end
