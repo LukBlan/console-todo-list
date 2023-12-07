@@ -88,7 +88,7 @@ class CommandLineFactory
         "print",
         "[print list_name optional_item_index]: print all items of the given list or specific item on list",
         [1, 2],
-        []
+        [validations["list_dont_exist"], validations["index_doesnt_exist"]]
       ),
       PriorityCommand.new(
         "priority",

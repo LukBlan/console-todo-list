@@ -5,6 +5,10 @@ class IndexDoesntExistValidation
     list_name = mapped_arguments["list_name"]
     check_values = mapped_arguments["item_index"]
 
+    if check_values == nil
+      return false
+    end
+
     if !check_values.is_a?(Array)
       check_values = [check_values]
     end
