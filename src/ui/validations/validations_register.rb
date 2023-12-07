@@ -3,6 +3,7 @@ require_relative './list_dont_exist_validation'
 require_relative './item_already_exist_validation'
 require_relative './deadline_format_validation'
 require_relative './index_doesnt_exist_validation'
+require_relative './positive_amount_validation'
 
 class ValidationsRegister
   def initialize
@@ -11,7 +12,8 @@ class ValidationsRegister
       ListDontExistValidation.new,
       ItemAlreadyExistValidation.new,
       DeadlineFormatValidation.new,
-      IndexDoesntExistValidation.new
+      IndexDoesntExistValidation.new,
+      PositiveAmountValidation.new
     ]
   end
 

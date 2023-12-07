@@ -52,7 +52,7 @@ class CommandLineFactory
         "up",
         "[up list_name item_index optional_amount]: move the specified item lower on the given list",
         [2,3],
-        []
+        [validations["list_dont_exist"], validations["index_doesnt_exist"], validations["positive_amount"]]
       ),
       DownCommand.new(
         "down",
