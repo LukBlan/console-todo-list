@@ -28,7 +28,7 @@ class CommandLineFactory
         "mktodo",
         "[mktodo list_name item_title item_deadline(yyyy-mm-dd) optional_description]: make a todo from given list",
         [3,4],
-        [validations["list_dont_exist"], validations["item_exist"]]
+        [validations["list_dont_exist"], validations["item_exist"], validations["deadline_format"]]
       ),
       ToggleCommand.new(
         "toggle",
