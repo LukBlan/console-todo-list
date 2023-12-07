@@ -80,7 +80,7 @@ class CommandLineFactory
       ),
       ShowAllCommand.new(
         "showall",
-        "[showall print all list and items with format",
+        "[showall] print all list and items with format",
         [0],
         []
       ),
