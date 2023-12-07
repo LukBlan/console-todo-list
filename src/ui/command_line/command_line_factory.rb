@@ -64,7 +64,7 @@ class CommandLineFactory
         "sort",
         "[sort list_name]: sort list by deadline",
         [1],
-        []
+        [validations["list_dont_exist"]]
       ),
       SwapCommand.new(
         "swap",
