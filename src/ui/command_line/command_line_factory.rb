@@ -94,7 +94,7 @@ class CommandLineFactory
         "priority",
         "[priority list_name]: swap the positions of the specified items on the given list",
         [1],
-        []
+        [validations["list_dont_exist"]]
       ),
       ExitCommand.new(
         "exit",
