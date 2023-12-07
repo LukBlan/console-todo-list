@@ -65,4 +65,9 @@ class TodoDatabase
     list.get_priority_item
   end
 
+  def list_have_item?(list_name, item_title)
+    list = get_list_by_name(list_name)
+    list.have_item?(item_title)
+  end
+
 end

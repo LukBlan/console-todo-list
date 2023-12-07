@@ -77,4 +77,9 @@ class List
     end
 
   end
+
+  def have_item?(item_title)
+    @items.find { |item| item.title == item_title}
+  end
+
 end
