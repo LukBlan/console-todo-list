@@ -70,7 +70,7 @@ class CommandLineFactory
         "swap",
         "[swap list_name item_1_index item_2_index]: swap the positions of the specified items on the given list",
         [3],
-        []
+        [validations["list_dont_exist"], validations["index_doesnt_exist"]]
       ),
       LsCommand.new(
         "ls",

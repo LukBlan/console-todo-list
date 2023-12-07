@@ -3,8 +3,15 @@
 class IndexDoesntExistValidation
   def invalid_arguments?(todo_database, mapped_arguments)
     list_name = mapped_arguments["list_name"]
-    item_index = mapped_arguments["item_index"].to_i
-    !todo_database.index_exist_on_list?(list_name, item_index)
+    check_values = mapped_arguments["item_index"]
+
+    if !check_values.is_a?(Array)
+      check_values = [check_values]
+    end
+
+    check_values.any? do |item_index|
+      !todo_database.index_exist_on_list?(list_name, item_index.to_i)
+    end
   end
 
   def message(arguments)
