@@ -46,7 +46,7 @@ class CommandLineFactory
         "purge",
         "[purge list_name]: remove all 'done' items on the given list",
         [1],
-        []
+        [validations["list_dont_exist"]]
       ),
       UpCommand.new(
         "up",
